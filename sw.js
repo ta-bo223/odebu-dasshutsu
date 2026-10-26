@@ -1,6 +1,6 @@
 'use strict';
 const PREFIX='odebu-app-'+encodeURIComponent(self.registration.scope)+'-';
-const CACHE=PREFIX+'39321fc1ff60f6e7';
+const CACHE=PREFIX+'7542f27923f25a61';
 const ASSETS=["./food-ai-worker.js","./", "./index.html", "./manifest.webmanifest", "./icon-180.png", "./icon-192.png", "./icon-512.png"];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS))));
 self.addEventListener('activate',event=>event.waitUntil((async()=>{
@@ -20,3 +20,4 @@ self.addEventListener('fetch',event=>{
  const allowed=ASSETS.map(p=>new URL(p,self.registration.scope).href);
  if(allowed.includes(u.href))event.respondWith(caches.match(event.request).then(r=>r||fetch(event.request)));
 });
+
